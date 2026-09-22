@@ -40,7 +40,7 @@
                 <span><i class="fa-solid fa-shield-check text-success mr-1"></i> 100% Surat Terjamin & Bergaransi</span>
             </div>
             <div class="flex items-center gap-3">
-                <span id="sync-status" class="bg-amber-500/20 text-amber-400 px-2 py-0.5 rounded text-[11px] font-medium"><i class="fa-solid fa-cloud text-[10px] mr-1"></i> Mode Lokal / Offline</span>
+                <span id="sync-status" class="bg-success/20 text-success px-2.5 py-0.5 rounded-full text-[11px] font-medium"><i class="fa-solid fa-cloud text-[10px] mr-1"></i> Cloud Firestore Terhubung (Real-time)</span>
                 <a href="https://instagram.com" target="_blank" class="hover:text-white transition"><i class="fa-brands fa-instagram"></i></a>
                 <a href="https://facebook.com" target="_blank" class="hover:text-white transition"><i class="fa-brands fa-facebook"></i></a>
                 <a href="https://tiktok.com" target="_blank" class="hover:text-white transition"><i class="fa-brands fa-tiktok"></i></a>
@@ -51,7 +51,6 @@
     <!-- Main Header -->
     <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <!-- Brand Logo -->
             <a href="#" class="flex items-center gap-3 group">
                 <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-primary to-accent flex items-center justify-center text-white shadow-md shadow-accent/20 group-hover:scale-105 transition">
                     <i class="fa-solid fa-motorcycle text-xl"></i>
@@ -65,14 +64,12 @@
                 </div>
             </a>
 
-            <!-- Desktop Navigation -->
             <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-slate-600">
                 <a href="#katalog" class="hover:text-accent transition">Katalog Motor</a>
                 <a href="#keunggulan" class="hover:text-accent transition">Keunggulan</a>
                 <a href="#kontak" class="hover:text-accent transition">Kontak & Lokasi</a>
             </nav>
 
-            <!-- Action Buttons -->
             <div class="flex items-center gap-3">
                 <button onclick="openAdminModal()" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 hover:border-accent text-slate-700 hover:text-accent font-semibold text-sm transition bg-slate-50/50">
                     <i class="fa-solid fa-lock text-xs"></i>
@@ -96,7 +93,6 @@
             <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">Temukan Motor Impian Anda di Razil Motor</h2>
             <p class="text-slate-300 text-sm sm:text-base mb-8 max-w-2xl mx-auto">Koleksi motor seken berkualitas tinggi, lulus uji teknis, lengkap dokumen STNK & BPKB dengan harga terbaik dan bisa nego langsung.</p>
             
-            <!-- Search Bar -->
             <div class="bg-white p-2 rounded-2xl shadow-xl flex flex-col sm:flex-row gap-2 max-w-2xl mx-auto">
                 <div class="flex-1 flex items-center px-3 gap-2 text-slate-400">
                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -110,8 +106,7 @@
     </section>
 
     <!-- Main Catalog Section -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <!-- Category & Brand Filters -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12" id="katalog">
         <div class="mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
             <div>
                 <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-2">Kategori:</span>
@@ -136,18 +131,13 @@
             </div>
         </div>
 
-        <!-- Catalog Counter & Status -->
         <div class="flex justify-between items-center mb-6">
-            <h3 class="text-lg font-bold text-primary">Datalog Unit Ready & Histori</h3>
+            <h3 class="text-lg font-bold text-primary">Katalog Unit Ready & Histori</h3>
             <span id="catalogCount" class="text-sm font-semibold text-slate-500">Menampilkan 0 unit motor</span>
         </div>
 
-        <!-- Product Grid -->
-        <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Dynamic Motorcards Will Render Here -->
-        </div>
+        <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
 
-        <!-- Empty State -->
         <div id="emptyState" class="hidden text-center py-16 bg-white rounded-2xl border border-slate-200 shadow-sm mt-4">
             <div class="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center mx-auto mb-4 text-slate-400 text-2xl">
                 <i class="fa-solid fa-motorcycle"></i>
@@ -158,7 +148,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-primary text-slate-400 pt-16 pb-12 border-t border-slate-800 mt-20">
+    <footer class="bg-primary text-slate-400 pt-16 pb-12 border-t border-slate-800 mt-20" id="kontak">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
                 <div>
@@ -188,7 +178,7 @@
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-white font-bold mb-4 text-sm uppercase tracking-wider">Keunggulan Kami</h4>
+                    <h4 class="text-white font-bold mb-4 text-sm uppercase tracking-wider" id="keunggulan">Keunggulan Kami</h4>
                     <ul class="space-y-2 text-sm">
                         <li><i class="fa-solid fa-check text-success mr-2"></i> Mesin halus & garansi toko</li>
                         <li><i class="fa-solid fa-check text-success mr-2"></i> Surat lengkap (STNK & BPKB)</li>
@@ -209,7 +199,7 @@
 
     <!-- MODAL NEGO HARGA -->
     <div id="negoModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl relative animate-in fade-in zoom-in duration-200">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl relative">
             <button onclick="closeNegoModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 transition">
                 <i class="fa-solid fa-xmark"></i>
             </button>
@@ -278,8 +268,8 @@
                         <i class="fa-solid fa-gauge-high"></i>
                     </div>
                     <div>
-                        <h3 class="text-lg font-bold text-primary">Dashboard Manajemen Unit & Cloud Sync</h3>
-                        <p class="text-xs text-slate-400">Tambah unit, atur status 'Terjual', atau sambungkan cloud database</p>
+                        <h3 class="text-lg font-bold text-primary">Dashboard Manajemen Unit</h3>
+                        <p class="text-xs text-slate-400">Tambah unit, atur status 'Terjual', atau hapus data</p>
                     </div>
                 </div>
                 <div class="flex items-center gap-2">
@@ -297,15 +287,10 @@
                 <button onclick="switchAdminTab('add')" id="tabBtnAdd" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-600 transition">
                     + Tambah Unit Baru
                 </button>
-                <button onclick="switchAdminTab('cloud')" id="tabBtnCloud" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-600 transition">
-                    ⚙️ Konfigurasi Cloud
-                </button>
             </div>
 
             <!-- Tab Content 1: List & History -->
-            <div id="adminTabList" class="flex-1 overflow-y-auto space-y-3 pr-2">
-                <!-- Rendered dynamically -->
-            </div>
+            <div id="adminTabList" class="flex-1 overflow-y-auto space-y-3 pr-2"></div>
 
             <!-- Tab Content 2: Add Form -->
             <div id="adminTabAdd" class="flex-1 overflow-y-auto hidden pr-2">
@@ -376,7 +361,6 @@
                         </div>
                     </div>
 
-                    <!-- Direct Photo Upload / Camera -->
                     <div>
                         <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Foto Kendaraan (Upload atau Ambil Langsung)</label>
                         <input type="file" id="mPhotoFile" accept="image/*" capture="environment" onchange="previewImage(event)" class="w-full px-4 py-2 rounded-xl border border-slate-200 text-sm file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-primary file:text-white hover:file:bg-slate-800 cursor-pointer">
@@ -391,42 +375,25 @@
                     </button>
                 </form>
             </div>
-
-            <!-- Tab Content 3: Cloud Settings -->
-            <div id="adminTabCloud" class="flex-1 overflow-y-auto hidden pr-2 space-y-4">
-                <div class="bg-blue-50 border border-blue-200 p-4 rounded-2xl text-xs text-blue-900 leading-relaxed">
-                    <p class="font-bold mb-1"><i class="fa-solid fa-circle-info mr-1"></i> Hubungkan Firebase Firestore</p>
-                    Masukkan konfigurasi Firebase Anda agar admin & seluruh pembeli di internet melihat data yang sama secara <em>real-time</em>. Jika dikosongkan, web menggunakan penyimpanan otomatis lokal browser.
-                </div>
-                
-                <div class="space-y-3">
-                    <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Firebase API Key</label>
-                        <input type="text" id="fbApiKey" placeholder="AIzaSy..." class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Firebase Project ID (ID Proyek)</label>
-                        <input type="text" id="fbProjectId" placeholder="motor-razil" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-bold">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Firebase Auth Domain (Opsional)</label>
-                        <input type="text" id="fbAuthDomain" placeholder="motor-razil.firebaseapp.com" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm">
-                    </div>
-                    <button onclick="saveCloudConfig()" class="w-full py-3 rounded-xl bg-success hover:bg-green-700 text-white font-bold text-sm transition shadow-md">
-                        Simpan & Hubungkan Cloud
-                    </button>
-                </div>
-            </div>
         </div>
     </div>
 
-    <!-- Firebase SDK v9 -->
+    <!-- Firebase SDK v9 & Hardcoded Config -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
         import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, updateDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
 
+        // Konfigurasi Firebase Anda yang otomatis terhubung
+        const firebaseConfig = {
+            apiKey: "AIzaSyDEJ7HsNxEWOkQnyVEYCEY2o1CDnPj_AgA",
+            authDomain: "razil-motor.firebaseapp.com",
+            projectId: "razil-motor",
+            storageBucket: "razil-motor.appspot.com",
+            messagingSenderId: "123456789",
+            appId: "1:123456:web:abcdef"
+        };
+
         let db = null;
-        let isCloudActive = false;
         let unsubscribeSnapshot = null;
 
         const defaultMotors = [
@@ -461,22 +428,6 @@
                 cond: 'Mesin Halus, Orisinil',
                 photo: 'https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?w=600&auto=format&fit=crop&q=80',
                 status: 'ready'
-            },
-            {
-                id: 'default-3',
-                brand: 'Vespa',
-                category: 'Matic',
-                name: 'Vespa Primavera 150 i-get',
-                price: '43.500.000',
-                year: '2021',
-                km: '14.000',
-                trans: 'Automatic CVT',
-                color: 'Green Relax',
-                plate: 'B 3321 VSP',
-                tax: 'Panjang Mar 2027',
-                cond: 'Istimewa Kolektor Item',
-                photo: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=600&auto=format&fit=crop&q=80',
-                status: 'ready'
             }
         ];
 
@@ -485,48 +436,19 @@
         let selectedBrand = 'Semua';
 
         window.initApp = function() {
-            const savedConfig = localStorage.getItem('razil_firebase_config');
-            if (savedConfig) {
-                try {
-                    const cfg = JSON.parse(savedConfig);
-                    document.getElementById('fbApiKey').value = cfg.apiKey || '';
-                    document.getElementById('fbProjectId').value = cfg.projectId || '';
-                    document.getElementById('fbAuthDomain').value = cfg.authDomain || '';
-
-                    if (cfg.apiKey && cfg.projectId) {
-                        const firebaseConfig = {
-                            apiKey: cfg.apiKey,
-                            projectId: cfg.projectId,
-                            authDomain: cfg.authDomain || `${cfg.projectId}.firebaseapp.com`,
-                            storageBucket: `${cfg.projectId}.appspot.com`,
-                            messagingSenderId: "123456789",
-                            appId: "1:123456:web:abcdef"
-                        };
-                        const app = initializeApp(firebaseConfig);
-                        db = getFirestore(app);
-                        isCloudActive = true;
-                        document.getElementById('sync-status').innerHTML = '<i class="fa-solid fa-cloud text-[10px] mr-1"></i> Cloud Firebase Terhubung (Real-time)';
-                        document.getElementById('sync-status').className = 'bg-success/20 text-success px-2 py-0.5 rounded text-[11px] font-medium';
-                        
-                        listenToFirestore();
-                        return;
-                    }
-                } catch(e) {
-                    console.error("Firebase init error:", e);
-                }
+            try {
+                const app = initializeApp(firebaseConfig);
+                db = getFirestore(app);
+                
+                document.getElementById('sync-status').innerHTML = '<i class="fa-solid fa-cloud text-[10px] mr-1"></i> Cloud Firestore Terhubung (Real-time)';
+                document.getElementById('sync-status').className = 'bg-success/20 text-success px-2.5 py-0.5 rounded-full text-[11px] font-medium';
+                
+                listenToFirestore();
+            } catch(e) {
+                console.error("Firebase init error:", e);
+                document.getElementById('sync-status').innerHTML = '<i class="fa-solid fa-triangle-exclamation text-[10px] mr-1"></i> Gagal Koneksi Cloud';
+                document.getElementById('sync-status').className = 'bg-rose-500/20 text-rose-500 px-2.5 py-0.5 rounded-full text-[11px] font-medium';
             }
-            
-            // Fallback to local storage
-            isCloudActive = false;
-            let localData = localStorage.getItem('razil_motors');
-            if (!localData) {
-                currentMotors = defaultMotors;
-                localStorage.setItem('razil_motors', JSON.stringify(defaultMotors));
-            } else {
-                currentMotors = JSON.parse(localData);
-            }
-            renderCatalog();
-            renderAdminList();
         }
 
         function listenToFirestore() {
@@ -539,8 +461,7 @@
                     list.push({ id: docSnap.id, ...docSnap.data() });
                 });
                 
-                if (list.length === 0 && currentMotors.length > 0) {
-                    // Seed defaults if empty
+                if (list.length === 0) {
                     defaultMotors.forEach(m => addDoc(collection(db, "motorcycles"), m));
                 } else {
                     currentMotors = list;
@@ -550,22 +471,6 @@
             }, (error) => {
                 console.error("Firestore sync error:", error);
             });
-        }
-
-        window.saveCloudConfig = function() {
-            const apiKey = document.getElementById('fbApiKey').value.trim();
-            const projectId = document.getElementById('fbProjectId').value.trim();
-            const authDomain = document.getElementById('fbAuthDomain').value.trim();
-
-            if (!apiKey || !projectId) {
-                alert('API Key dan Project ID wajib diisi!');
-                return;
-            }
-
-            const cfg = { apiKey, projectId, authDomain: authDomain || `${projectId}.firebaseapp.com` };
-            localStorage.setItem('razil_firebase_config', JSON.stringify(cfg));
-            alert('Konfigurasi berhasil disimpan! Halaman akan dimuat ulang.');
-            location.reload();
         }
 
         window.renderCatalog = function() {
@@ -693,22 +598,14 @@
                 status: 'ready'
             };
 
-            if (isCloudActive && db) {
+            if (db) {
                 try {
                     await addDoc(collection(db, "motorcycles"), newMotor);
                     alert('Unit berhasil di-upload ke Cloud Firestore secara real-time!');
                 } catch(err) {
                     console.error("Gagal simpan ke cloud:", err);
-                    alert('Gagal simpan ke cloud, tersimpan di lokal.');
-                    currentMotors.push({ id: 'local-' + Date.now(), ...newMotor });
-                    localStorage.setItem('razil_motors', JSON.stringify(currentMotors));
+                    alert('Gagal simpan ke cloud.');
                 }
-            } else {
-                currentMotors.push({ id: 'local-' + Date.now(), ...newMotor });
-                localStorage.setItem('razil_motors', JSON.stringify(currentMotors));
-                renderCatalog();
-                renderAdminList();
-                alert('Unit berhasil ditambahkan secara lokal!');
             }
 
             document.getElementById('addMotorForm').reset();
@@ -721,37 +618,26 @@
             if (!motor) return;
             const newStatus = motor.status === 'terjual' ? 'ready' : 'terjual';
 
-            if (isCloudActive && db && !id.startsWith('local-')) {
+            if (db) {
                 try {
                     await updateDoc(doc(db, "motorcycles", id), { status: newStatus });
                 } catch(e) {
                     console.error(e);
                 }
-            } else {
-                motor.status = newStatus;
-                localStorage.setItem('razil_motors', JSON.stringify(currentMotors));
-                renderCatalog();
-                renderAdminList();
             }
         }
 
         window.deleteMotor = async function(id) {
             if (!confirm('Yakin ingin menghapus unit ini dari histori?')) return;
-            if (isCloudActive && db && !id.startsWith('local-')) {
+            if (db) {
                 try {
                     await deleteDoc(doc(db, "motorcycles", id));
                 } catch(e) {
                     console.error(e);
                 }
-            } else {
-                currentMotors = currentMotors.filter(m => m.id !== id);
-                localStorage.setItem('razil_motors', JSON.stringify(currentMotors));
-                renderCatalog();
-                renderAdminList();
             }
         }
 
-        // Auto format numbers
         window.formatRupiahInput = function(input) {
             let val = input.value.replace(/[^,\d]/g, '').toString();
             let split = val.split(',');
@@ -819,7 +705,6 @@
             renderCatalog();
         }
 
-        // Modal Triggers
         window.openLoginModal = () => document.getElementById('loginModal').classList.remove('hidden');
         window.closeLoginModal = () => document.getElementById('loginModal').classList.add('hidden');
         window.openAdminModal = () => openLoginModal();
@@ -842,10 +727,8 @@
         window.switchAdminTab = function(tab) {
             document.getElementById('adminTabList').classList.add('hidden');
             document.getElementById('adminTabAdd').classList.add('hidden');
-            document.getElementById('adminTabCloud').classList.add('hidden');
             document.getElementById('tabBtnList').className = "px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-600 transition";
             document.getElementById('tabBtnAdd').className = "px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-600 transition";
-            document.getElementById('tabBtnCloud').className = "px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-600 transition";
 
             if (tab === 'list') {
                 document.getElementById('adminTabList').classList.remove('hidden');
@@ -853,9 +736,6 @@
             } else if (tab === 'add') {
                 document.getElementById('adminTabAdd').classList.remove('hidden');
                 document.getElementById('tabBtnAdd').className = "px-4 py-2 rounded-xl text-xs font-bold bg-primary text-white transition";
-            } else if (tab === 'cloud') {
-                document.getElementById('adminTabCloud').classList.remove('hidden');
-                document.getElementById('tabBtnCloud').className = "px-4 py-2 rounded-xl text-xs font-bold bg-primary text-white transition";
             }
         }
 
@@ -876,12 +756,11 @@
             const note = document.getElementById('negoNote').value;
             const title = document.getElementById('negoMotorTitle').innerText;
 
-            const text = `Halo Admin Razil Motor, saya *${name}* ingin menawar unit *${title*I}* dengan harga *Rp ${price}*. Catatan: ${note}`;
+            const text = `Halo Admin Razil Motor, saya *${name}* ingin menawar unit *${title}* dengan harga *Rp ${price}*. Catatan: ${note}`;
             window.open(`https://wa.me/6283892386060?text=${encodeURIComponent(text)}`, '_blank');
             closeNegoModal();
         }
 
-        // Init on load
         initApp();
     </script>
 </body>
