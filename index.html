@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Razil Motor - Showroom Motor Bekas Berkualitas & Bergaransi</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f0fdf4',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-emerald-500 selection:text-white">
+
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Premium Logo Design -->
+            <a href="#" class="flex items-center gap-3.5 group">
+                <div class="relative w-12 h-12 bg-gradient-to-tr from-emerald-600 via-emerald-500 to-teal-400 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-emerald-600/30 group-hover:scale-105 transition-all duration-300 ring-2 ring-emerald-500/20">
+                    <i class="fa-solid fa-motorcycle text-xl"></i>
+                    <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-amber-400 rounded-full border-2 border-white flex items-center justify-center text-[9px] text-slate-900 font-bold">
+                        <i class="fa-solid fa-star text-[8px]"></i>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex items-center gap-1.5">
+                        <span class="text-xl font-extrabold tracking-tight text-slate-900 leading-none">RAZIL</span>
+                        <span class="text-xl font-light tracking-tight text-emerald-600 leading-none">MOTOR</span>
+                    </div>
+                    <span class="text-[10px] text-slate-400 font-semibold tracking-widest uppercase mt-0.5 block">Showroom & Jual Beli Seken</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-slate-600">
+                <a href="#catalog" class="hover:text-emerald-600 transition-colors">Katalog Motor</a>
+                <a href="#features" class="hover:text-emerald-600 transition-colors">Keunggulan</a>
+                <a href="#contact" class="hover:text-emerald-600 transition-colors">Kontak</a>
+                <button onclick="openAdminModal()" class="flex items-center gap-1.5 text-slate-700 hover:text-emerald-600 font-semibold transition-colors bg-slate-100 hover:bg-emerald-50 px-3.5 py-2 rounded-xl">
+                    <i class="fa-solid fa-lock text-xs text-emerald-600"></i> Panel Admin
+                </button>
+            </nav>
+
+            <!-- Action CTA -->
+            <div class="hidden sm:flex items-center gap-3">
+                <a href="https://wa.me/6281234567890" target="_blank" class="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm px-5 py-2.5 rounded-xl shadow-lg shadow-emerald-600/20 transition-all transform hover:-translate-y-0.5">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Hubungi Admin</span>
+                </a>
+            </div>
+
+            <!-- Mobile menu button -->
+            <button id="mobile-menu-btn" class="md:hidden text-slate-700 hover:text-emerald-600 p-2 focus:outline-none">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-6 py-4 space-y-3 shadow-lg">
+            <a href="#catalog" class="block font-medium text-slate-700 hover:text-emerald-600 py-1">Katalog Motor</a>
+            <a href="#features" class="block font-medium text-slate-700 hover:text-emerald-600 py-1">Keunggulan</a>
+            <a href="#contact" class="block font-medium text-slate-700 hover:text-emerald-600 py-1">Kontak</a>
+            <button onclick="openAdminModal(); toggleMobileMenu();" class="w-full text-left font-medium text-emerald-600 py-1 flex items-center gap-2">
+                <i class="fa-solid fa-lock text-xs"></i> Panel Admin
+            </button>
+            <div class="pt-2 border-t border-slate-100">
+                <a href="https://wa.me/6281234567890" target="_blank" class="flex items-center justify-center gap-2 bg-emerald-600 text-white font-semibold text-sm px-4 py-2.5 rounded-xl w-full">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp Admin
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative bg-slate-900 text-white overflow-hidden py-20 lg:py-28">
+        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#22c55e_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="absolute -top-40 -right-40 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-6">
+                <i class="fa-solid fa-shield-check"></i> Jaminan Mesin Original & Surat Lengkap
+            </span>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight max-w-4xl mx-auto leading-tight">
+                Temukan Motor Bekas Impian Anda di <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">Razil Motor</span>
+            </h1>
+            <p class="mt-6 text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto font-light">
+                Pilihan motor seken berkualitas tinggi dengan kondisi prima, siap pakai, harga jujur, dan bisa ditawar langsung secara online!
+            </p>
+
+            <!-- Search & Quick Filters Box -->
+            <div class="mt-10 max-w-3xl mx-auto bg-white/10 backdrop-blur-md p-3 sm:p-4 rounded-2xl border border-white/10 shadow-2xl">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </span>
+                        <input type="text" id="searchInput" placeholder="Cari merk atau model motor..." class="w-full pl-10 pr-4 py-3 bg-slate-900/60 border border-slate-700 rounded-xl text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    </div>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                            <i class="fa-solid fa-filter"></i>
+                        </span>
+                        <select id="brandFilterSelect" class="w-full pl-10 pr-4 py-3 bg-slate-900/60 border border-slate-700 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 appearance-none">
+                            <option value="all" class="bg-slate-900">Semua Merk</option>
+                            <option value="Honda" class="bg-slate-900">Honda</option>
+                            <option value="Yamaha" class="bg-slate-900">Yamaha</option>
+                            <option value="Suzuki" class="bg-slate-900">Suzuki</option>
+                            <option value="Vespa" class="bg-slate-900">Vespa</option>
+                            <option value="Kawasaki" class="bg-slate-900">Kawasaki</option>
+                        </select>
+                    </div>
+                    <div>
+                        <button onclick="applyFilters()" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-3 px-6 rounded-xl transition-all shadow-lg shadow-emerald-500/30 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-search"></i> Cari Motor
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto pt-8 border-t border-slate-800/80">
+                <div class="text-center">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-white">100%</div>
+                    <div class="text-xs sm:text-sm text-slate-400 mt-1">Surat Legal (BPKB/STNK)</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-white">Garansi</div>
+                    <div class="text-xs sm:text-sm text-slate-400 mt-1">Mesin 1 Bulan</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-white">Bisa</div>
+                    <div class="text-xs sm:text-sm text-slate-400 mt-1">Tawar Harga Langsung</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-white">Free</div>
+                    <div class="text-xs sm:text-sm text-slate-400 mt-1">Servis & Oli Pertama</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-white border-b border-slate-200 py-6 sticky top-20 z-30 shadow-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between overflow-x-auto pb-2 gap-3 no-scrollbar">
+                <div class="flex items-center gap-2 shrink-0">
+                    <span class="text-xs font-bold uppercase text-slate-400 tracking-wider mr-2">Filter Merk:</span>
+                    <button onclick="filterByBrand('all')" class="brand-btn active px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-emerald-600 text-white shadow-md shadow-emerald-600/20">Semua</button>
+                    <button onclick="filterByBrand('Honda')" class="brand-btn px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-slate-100 hover:bg-slate-200 text-slate-700">Honda</button>
+                    <button onclick="filterByBrand('Yamaha')" class="brand-btn px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-slate-100 hover:bg-slate-200 text-slate-700">Yamaha</button>
+                    <button onclick="filterByBrand('Suzuki')" class="brand-btn px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-slate-100 hover:bg-slate-200 text-slate-700">Suzuki</button>
+                    <button onclick="filterByBrand('Vespa')" class="brand-btn px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-slate-100 hover:bg-slate-200 text-slate-700">Vespa</button>
+                    <button onclick="filterByBrand('Kawasaki')" class="brand-btn px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-slate-100 hover:bg-slate-200 text-slate-700">Kawasaki</button>
+                </div>
+                <div class="text-xs text-slate-500 hidden lg:block">
+                    Menampilkan <span id="itemCount" class="font-bold text-slate-800">6</span> unit motor
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main id="catalog" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+            <div>
+                <span class="text-xs font-bold text-emerald-600 tracking-wider uppercase bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100">Katalog Pilihan</span>
+                <h2 class="text-3xl font-extrabold text-slate-900 mt-2">Penawaran Motor Terbaik & Histori Terjual</h2>
+            </div>
+            <p class="text-slate-500 text-sm mt-2 md:mt-0 max-w-md">
+                Unit tersedia siap jalan maupun unit arsip histori yang telah terjual di Razil Motor.
+            </p>
+        </div>
+
+        <!-- Grid Container -->
+        <div id="motorcycleGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Dynamic items populated by JS -->
+        </div>
+
+        <!-- Empty state -->
+        <div id="emptyState" class="hidden text-center py-16 bg-white rounded-2xl border border-slate-200 mt-4">
+            <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto text-slate-400 text-2xl mb-4">
+                <i class="fa-solid fa-face-frown"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-800">Motor Tidak Ditemukan</h3>
+            <p class="text-slate-500 text-sm mt-1">Coba gunakan kata kunci lain atau reset filter pencarian Anda.</p>
+            <button onclick="resetFilters()" class="mt-4 px-4 py-2 bg-emerald-600 text-white font-semibold text-sm rounded-xl">Reset Filter</button>
+        </div>
+    </main>
+
+    <div id="detailModal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-100 animate-in fade-in zoom-in duration-200">
+            <div class="relative h-64 sm:h-80 bg-slate-100 overflow-hidden">
+                <img id="modalImage" src="" alt="Motor" class="w-full h-full object-cover">
+                <button onclick="closeDetailModal()" class="absolute top-4 right-4 bg-slate-900/60 hover:bg-slate-900 text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+                <div class="absolute bottom-4 left-4">
+                    <span id="modalBrandBadge" class="bg-emerald-600 text-white text-xs font-bold px-3 py-1.5 rounded-lg uppercase tracking-wider shadow"></span>
+                </div>
+            </div>
+            <div class="p-6 sm:p-8">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <h3 id="modalTitle" class="text-2xl font-bold text-slate-950"></h3>
+                        <p id="modalYear" class="text-sm text-slate-500 mt-0.5"></p>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-xs text-slate-400 uppercase font-semibold">Harga Cash</div>
+                        <div id="modalPrice" class="text-2xl font-extrabold text-emerald-600"></div>
+                    </div>
+                </div>
+
+                <div class="mt-6 border-t border-slate-100 pt-6">
+                    <h4 class="text-sm font-bold text-slate-900 uppercase tracking-wider mb-3">Spesifikasi Kendaraan</h4>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200/60 text-center">
+                            <i class="fa-solid fa-gauge-high text-emerald-600 mb-1"></i>
+                            <div class="text-xs text-slate-400">Kilometer</div>
+                            <div id="modalKm" class="text-sm font-bold text-slate-800"></div>
+                        </div>
+                        <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200/60 text-center">
+                            <i class="fa-solid fa-gear text-emerald-600 mb-1"></i>
+                            <div class="text-xs text-slate-400">Transmisi</div>
+                            <div id="modalTransmission" class="text-sm font-bold text-slate-800"></div>
+                        </div>
+                        <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200/60 text-center">
+                            <i class="fa-solid fa-bolt text-emerald-600 mb-1"></i>
+                            <div class="text-xs text-slate-400">Kapasitas Mesin</div>
+                            <div id="modalEngine" class="text-sm font-bold text-slate-800"></div>
+                        </div>
+                        <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200/60 text-center">
+                            <i class="fa-solid fa-calendar-days text-emerald-600 mb-1"></i>
+                            <div class="text-xs text-slate-400">Tahun Rakit</div>
+                            <div id="modalYearBox" class="text-sm font-bold text-slate-800"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 border-t border-slate-100 pt-6">
+                    <h4 class="text-sm font-bold text-slate-900 uppercase tracking-wider mb-3">Kondisi Kendaraan</h4>
+                    <div id="modalConditions" class="flex flex-wrap gap-2">
+                        <!-- Dynamic Condition Tags -->
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-6 border-t border-slate-100 flex items-center justify-end gap-3">
+                    <button onclick="closeDetailModal()" class="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 font-semibold text-sm text-slate-700 rounded-xl transition-colors">Tutup</button>
+                    <button id="modalNegotiateBtn" class="px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm rounded-xl shadow-lg shadow-emerald-600/20 flex items-center gap-2 transition-all">
+                        <i class="fa-solid fa-handshake"></i> Tawar Harga Ini
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Negotiation Modal -->
+    <div id="negoModal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-slate-100 animate-in fade-in zoom-in duration-200">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600 text-lg">
+                        <i class="fa-solid fa-hand-holding-dollar"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900">Form Negosiasi Harga</h3>
+                        <p class="text-xs text-slate-500">Tawar harga motor impian Anda di Razil Motor</p>
+                    </div>
+                </div>
+                <button onclick="closeNegoModal()" class="text-slate-400 hover:text-slate-600">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+
+            <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200 mb-5 flex items-center gap-3">
+                <img id="negoMotorImg" src="" class="w-16 h-16 object-cover rounded-xl shrink-0" alt="">
+                <div>
+                    <h4 id="negoMotorTitle" class="text-sm font-bold text-slate-900 line-clamp-1"></h4>
+                    <div class="text-xs text-slate-500 mt-0.5">Harga Awal: <span id="negoMotorBasePrice" class="font-bold text-emerald-600"></span></div>
+                </div>
+            </div>
+
+            <form id="negoForm" onsubmit="submitNegotiation(event)" class="space-y-4">
+                <input type="hidden" id="negoMotorId">
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-600 mb-1.5">Nama Lengkap</label>
+                    <input type="text" id="negoName" required placeholder="Contoh: Budi Santoso" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-600 mb-1.5">Nomor WhatsApp</label>
+                    <input type="tel" id="negoPhone" required placeholder="Contoh: 081234567890" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-600 mb-1.5">Harga Penawaran Anda (Rp)</label>
+                    <input type="text" id="negoPrice" required oninput="formatInputNumber(this)" placeholder="Contoh: 15.000.000" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    <p class="text-[11px] text-slate-400 mt-1">Titik ribuan diformat secara otomatis.</p>
+                </div>
+
+                <div class="pt-2">
+                    <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-4 rounded-xl transition-all shadow-lg shadow-emerald-600/20 flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> Kirim Penawaran via WhatsApp
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="adminModal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-100 animate-in fade-in zoom-in duration-200">
+            
+            <!-- Admin Login View -->
+            <div id="adminLoginView" class="p-8">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 text-xl font-bold">
+                            <i class="fa-solid fa-lock"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900">Panel Admin Razil Motor</h3>
+                            <p class="text-xs text-slate-500">Masukkan PIN admin untuk mengelola unit kendaraan</p>
+                        </div>
+                    </div>
+                    <button onclick="closeAdminModal()" class="text-slate-400 hover:text-slate-600">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+
+                <form onsubmit="handleAdminLogin(event)" class="space-y-4 max-w-md mx-auto py-6">
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-600 mb-2">PIN Admin</label>
+                        <input type="password" id="adminPinInput" required placeholder="Masukkan PIN (default: admin123)" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                        <p class="text-xs text-slate-400 mt-1">Hint: PIN default adalah <span class="font-semibold text-emerald-600">admin123</span></p>
+                    </div>
+                    <div id="loginError" class="hidden text-xs text-rose-500 font-semibold">PIN Salah! Silakan coba lagi.</div>
+                    <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-xl shadow-lg shadow-emerald-600/20 transition-all">
+                        Masuk Dashboard Admin
+                    </button>
+                </form>
+            </div>
+
+            <!-- Admin Dashboard View -->
+            <div id="adminDashboardView" class="hidden p-6 sm:p-8">
+                <div class="flex items-center justify-between pb-6 border-b border-slate-100">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 text-xl">
+                            <i class="fa-solid fa-gauge-high"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900">Dashboard Manajemen Unit & Histori</h3>
+                            <p class="text-xs text-slate-500">Tambah unit, atur status 'Terjual' untuk histori, atau hapus data</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <button onclick="logoutAdmin()" class="px-4 py-2 bg-rose-50 hover:bg-rose-100 text-rose-600 font-semibold text-xs rounded-xl transition-colors">
+                            <i class="fa-solid fa-right-from-bracket mr-1"></i> Keluar
+                        </button>
+                        <button onclick="closeAdminModal()" class="text-slate-400 hover:text-slate-600 p-2">
+                            <i class="fa-solid fa-xmark text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tabs inside admin dashboard -->
+                <div class="mt-6 flex gap-3 border-b border-slate-200 pb-3">
+                    <button onclick="switchAdminTab('add')" id="tabAddBtn" class="px-4 py-2 bg-emerald-600 text-white font-semibold text-xs rounded-xl shadow-sm transition-all">Tambah Unit Baru</button>
+                    <button onclick="switchAdminTab('manage')" id="tabManageBtn" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs rounded-xl transition-all">Kelola & Histori (<span id="adminTotalCount">0</span>)</button>
+                </div>
+
+                <!-- Tab 1: Add Motorcycle Form with Real-time formatting -->
+                <div id="adminAddTab" class="mt-6">
+                    <form onsubmit="addNewMotorcycle(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Merk Motor</label>
+                                <select id="newBrand" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                                    <option value="Honda">Honda</option>
+                                    <option value="Yamaha">Yamaha</option>
+                                    <option value="Suzuki">Suzuki</option>
+                                    <option value="Vespa">Vespa</option>
+                                    <option value="Kawasaki">Kawasaki</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Model / Tipe</label>
+                                <input type="text" id="newModel" required placeholder="Contoh: Beat Deluxe / Fazzio" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Harga Cash (Rp)</label>
+                                <input type="text" id="newPrice" required oninput="formatInputNumber(this)" placeholder="17.500.000" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Tahun Produksi</label>
+                                <input type="number" id="newYear" required placeholder="2023" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Kilometer (KM)</label>
+                                <input type="text" id="newKm" required oninput="formatInputNumber(this)" placeholder="12.000" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Transmisi</label>
+                                <select id="newTransmission" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                                    <option value="Matic">Matic</option>
+                                    <option value="Manual">Manual</option>
+                                    <option value="Semi-Auto">Semi-Auto</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Kapasitas Mesin</label>
+                                <input type="text" id="newEngine" required placeholder="110 cc" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                            </div>
+                        </div>
+
+                        <!-- Direct File Upload & Camera Capture Input -->
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Foto Kendaraan (Upload File / Kamera)</label>
+                            <div class="flex items-center gap-4">
+                                <input type="file" id="newImageFile" accept="image/*" capture="environment" required onchange="previewNewImage(event)" class="w-full text-sm text-slate-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100 cursor-pointer border border-slate-200 rounded-xl bg-slate-50">
+                            </div>
+                            <div id="imagePreviewContainer" class="hidden mt-3">
+                                <span class="text-[11px] text-slate-400 block mb-1">Pratinjau Foto:</span>
+                                <img id="imagePreview" class="w-28 h-28 object-cover rounded-2xl border-2 border-emerald-500 shadow-sm">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Kondisi (Pisahkan dengan koma)</label>
+                            <input type="text" id="newConditions" required placeholder="Mesin Halus, Pajak Hidup, Body Mulus, Surat Lengkap" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                        </div>
+
+                        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-xl shadow-lg shadow-emerald-600/20 transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-plus-circle"></i> Tambahkan ke Katalog Live
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Tab 2: Manage & Toggle Status (Terjual / Ready) -->
+                <div id="adminManageTab" class="hidden mt-6 space-y-3 max-h-[350px] overflow-y-auto pr-1">
+                    <div id="adminMotorList" class="space-y-3">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 bg-slate-900 text-white px-5 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3 border border-slate-800">
+        <div class="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-white shrink-0">
+            <i class="fa-solid fa-check text-sm"></i>
+        </div>
+        <div>
+            <div class="text-sm font-bold" id="toastTitle">Berhasil!</div>
+            <div class="text-xs text-slate-300" id="toastDesc">Aksi berhasil dilakukan.</div>
+        </div>
+    </div>
+
+    <section id="features" class="bg-white py-20 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-bold text-emerald-600 tracking-wider uppercase bg-emerald-50 px-3 py-1.5 rounded-full border border-emerald-100">Kenapa Razil Motor?</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Komitmen Kualitas & Kepercayaan</h2>
+                <p class="mt-4 text-slate-500 text-sm sm:text-base">Kami memberikan pengalaman jual beli motor bekas yang aman, transparan, dan memuaskan bagi setiap pelanggan.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 hover:border-emerald-200 transition-all group">
+                    <div class="w-14 h-14 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-600 text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-file-shield"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Legalitas Surat 100% Aman</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">
+                        Semua unit motor di Razil Motor dijamin keabsahan dokumennya (BPKB, STNK, faktur, dan nomor rangka/mesin terverifikasi Samsat).
+                    </p>
+                </div>
+
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 hover:border-emerald-200 transition-all group">
+                    <div class="w-14 h-14 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-600 text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Garansi Mesin & Siap Pakai</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">
+                        Mesin halus, kering, dan bebas kendala. Setiap unit sudah melalui tune-up menyeluruh oleh mekanik profesional kami sebelum dipajang.
+                    </p>
+                </div>
+
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 hover:border-emerald-200 transition-all group">
+                    <div class="w-14 h-14 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-600 text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-handshake-angle"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Negosiasi Fleksibel & Transparan</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">
+                        Bisa tawar harga langsung secara online atau datang langsung ke showroom untuk negosiasi kekeluargaan sampai deal.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="bg-slate-900 text-white py-20 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#22c55e_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="text-xs font-bold text-emerald-400 tracking-wider uppercase bg-emerald-500/10 px-3 py-1.5 rounded-full border border-emerald-500/20">Lokasi Showroom</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold mt-4 mb-6">Kunjungi Showroom Razil Motor Sekarang</h2>
+                    <p class="text-slate-300 text-sm sm:text-base mb-8 leading-relaxed">
+                        Ingin cek unit langsung, test drive, atau konsultasi tukar tambah? Tim kami siap melayani Anda setiap hari mulai pukul 08.00 - 18.00 WIB.
+                    </p>
+
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-emerald-500/10 border border-emerald-500/20 rounded-xl flex items-center justify-center text-emerald-400 shrink-0 mt-1">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Alamat Utama</h4>
+                                <p class="text-slate-400 text-sm mt-0.5">Jl. Raya Pasar Minggu No. 45, Pancoran, Jakarta Selatan, DKI Jakarta</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-emerald-500/10 border border-emerald-500/20 rounded-xl flex items-center justify-center text-emerald-400 shrink-0 mt-1">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Telepon / WhatsApp</h4>
+                                <p class="text-slate-400 text-sm mt-0.5">+62 812-3456-7890 (Admin Razil)</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-emerald-500/10 border border-emerald-500/20 rounded-xl flex items-center justify-center text-emerald-400 shrink-0 mt-1">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Jam Operasional</h4>
+                                <p class="text-slate-400 text-sm mt-0.5">Senin - Minggu : 08.00 - 18.00 WIB</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/80 backdrop-blur-md p-8 rounded-3xl border border-slate-700 shadow-2xl">
+                    <h3 class="text-xl font-bold mb-4 text-white">Ada Pertanyaan Khusus?</h3>
+                    <p class="text-slate-300 text-sm mb-6">Kirimkan pesan langsung ke WhatsApp kami untuk respon cepat.</p>
+                    
+                    <form onsubmit="sendGeneralContact(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-400 mb-1.5">Nama Anda</label>
+                            <input type="text" id="contactName" required placeholder="Masukkan nama..." class="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-400 mb-1.5">Pesan / Pertanyaan</label>
+                            <textarea id="contactMessage" rows="4" required placeholder="Tuliskan pertanyaan tentang motor atau layanan..." class="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-3 px-4 rounded-xl transition-all shadow-lg shadow-emerald-500/20 flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> Kirim Pesan via WhatsApp
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 bg-emerald-600 rounded-xl flex items-center justify-center text-white">
+                    <i class="fa-solid fa-motorcycle"></i>
+                </div>
+                <span class="text-lg font-bold text-white tracking-tight">RAZIL <span class="text-emerald-500">MOTOR</span></span>
+            </div>
+            <p class="text-xs text-slate-500 text-center md:text-left">
+                &copy; 2026 Razil Motor. All rights reserved. Showroom Motor Bekas Terpercaya di Jakarta.
+            </p>
+            <div class="flex items-center gap-4 text-lg">
+                <a href="#" class="w-9 h-9 bg-slate-900 hover:bg-emerald-600 hover:text-white rounded-xl flex items-center justify-center transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="w-9 h-9 bg-slate-900 hover:bg-emerald-600 hover:text-white rounded-xl flex items-center justify-center transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" class="w-9 h-9 bg-slate-900 hover:bg-emerald-600 hover:text-white rounded-xl flex items-center justify-center transition-colors"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Default initial motorcycles with sample data and status ('ready' or 'sold')
+        const defaultMotorcycles = [
+            {
+                id: 1,
+                brand: "Honda",
+                model: "Beat Street",
+                year: 2023,
+                transmission: "Matic",
+                km: "12.000 KM",
+                engine: "110 cc",
+                price: 16500000,
+                image: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&q=80&w=800",
+                conditions: ["Mesin Halus", "Pajak Hidup (Panjang)", "Body 98% Mulus", "Surat Lengkap BPKB/STNK"],
+                status: "ready"
+            },
+            {
+                id: 2,
+                brand: "Yamaha",
+                model: "NMAX 155 Connected",
+                year: 2022,
+                transmission: "Matic",
+                km: "18.500 KM",
+                engine: "155 cc",
+                price: 27000000,
+                image: "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&q=80&w=800",
+                conditions: ["Mesin Standar Original", "Pajak Hidup", "Ban Baru Depan Belakang", "Surat Lengkap BPKB/STNK/Faktur"],
+                status: "ready"
+            },
+            {
+                id: 3,
+                brand: "Honda",
+                model: "CRF 150L",
+                year: 2021,
+                transmission: "Manual",
+                km: "14.000 KM",
+                engine: "150 cc",
+                price: 31500000,
+                image: "https://images.unsplash.com/photo-1609630875172-2aa5c09a835d?auto=format&fit=crop&q=80&w=800",
+                conditions: ["Suspensi Empuk", "Pajak Hidup", "Siap Offroad & Harian", "Surat Lengkap BPKB/STNK"],
+                status: "sold"
+            },
+            {
+                id: 4,
+                brand: "Yamaha",
+                model: "Aerox 155 VVA",
+                year: 2023,
+                transmission: "Matic",
+                km: "9.500 KM",
+                engine: "155 cc",
+                price: 25500000,
+                image: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&q=80&w=800",
+                conditions: ["Mesin Halus Tarikan Responsif", "Pajak Hidup Panjang", "Mulus Tanpa Lecet", "Surat Lengkap"],
+                status: "ready"
+            },
+            {
+                id: 5,
+                brand: "Vespa",
+                model: "Sprint 150 i-get",
+                year: 2021,
+                transmission: "Matic",
+                km: "11.000 KM",
+                engine: "150 cc",
+                price: 42000000,
+                image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80&w=800",
+                conditions: ["Cat Original Mulus", "Pajak Hidup", "Kelistrikan Normal", "Surat Lengkap BPKB/STNK/Kunci Master"],
+                status: "ready"
+            },
+            {
+                id: 6,
+                brand: "Kawasaki",
+                model: "Ninja 250 SL",
+                year: 2020,
+                transmission: "Manual",
+                km: "22.000 KM",
+                engine: "250 cc",
+                price: 33000000,
+                image: "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&q=80&w=800",
+                conditions: ["Mesin Sehat Bertenaga", "Pajak Hidup", "Knalpot Racing Original", "Surat Lengkap BPKB/STNK"],
+                status: "ready"
+            }
+        ];
+
+        let motorcycles = JSON.parse(localStorage.getItem('razil_motorcycles')) || defaultMotorcycles;
+        let currentFilterBrand = 'all';
+        let isAdminLoggedIn = false;
+
+        function saveMotorcyclesToStorage() {
+            localStorage.setItem('razil_motorcycles', JSON.stringify(motorcycles));
+        }
+
+        // Format currency to IDR
+        function formatRupiah(angka) {
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(angka);
+        }
+
+        // Real-time Number Input Formatter (dots for thousands)
+        function formatInputNumber(input) {
+            let val = input.value.replace(/\D/g, '');
+            if (val !== '') {
+                val = parseInt(val, 10).toLocaleString('id-ID');
+            }
+            input.value = val;
+        }
+
+        // Helper to get raw integer from formatted input string
+        function parseCleanNumber(formattedVal) {
+            if (!formattedVal) return 0;
+            return parseInt(String(formattedVal).replace(/\./g, ''), 10) || 0;
+        }
+
+        // Render Motorcycle Grid in Catalog
+        function renderMotorcycles(data) {
+            const grid = document.getElementById('motorcycleGrid');
+            const emptyState = document.getElementById('emptyState');
+            const itemCount = document.getElementById('itemCount');
+            
+            grid.innerHTML = '';
+            itemCount.textContent = data.length;
+
+            if (data.length === 0) {
+                emptyState.classList.remove('hidden');
+                return;
+            } else {
+                emptyState.classList.add('hidden');
+            }
+
+            data.forEach(motor => {
+                const card = document.createElement('div');
+                const isSold = motor.status === 'sold';
+                
+                card.className = `bg-white rounded-3xl border ${isSold ? 'border-rose-200 bg-slate-50/50 opacity-90' : 'border-slate-200/80'} shadow-xs hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group relative`;
+                
+                let conditionHtml = motor.conditions.slice(0, 2).map(cond => 
+                    `<span class="bg-emerald-50 text-emerald-700 text-[11px] font-semibold px-2.5 py-1 rounded-lg border border-emerald-100 flex items-center gap-1">
+                        <i class="fa-solid fa-check text-[10px]"></i> ${cond}
+                    </span>`
+                ).join('');
+
+                let statusBadge = isSold 
+                    ? `<div class="absolute top-3 right-3 z-10"><span class="bg-rose-600 text-white text-xs font-black px-3.5 py-1 rounded-lg shadow-lg tracking-wider uppercase animate-pulse">TERJUAL</span></div>`
+                    : `<div class="absolute top-3 right-3 z-10"><span class="bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-lg shadow">${motor.year}</span></div>`;
+
+                card.innerHTML = `
+                    <div class="relative h-56 bg-slate-100 overflow-hidden">
+                        <img src="${motor.image}" alt="${motor.brand} ${motor.model}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-550 ${isSold ? 'grayscale-25' : ''}" onerror="this.src='https://placehold.co/800x600/1e293b/ffffff?text=Razil+Motor'">
+                        <div class="absolute top-3 left-3 z-10">
+                            <span class="bg-slate-900/80 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-lg uppercase tracking-wider">${motor.brand}</span>
+                        </div>
+                        ${statusBadge}
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-lg font-extrabold text-slate-900 group-hover:text-emerald-600 transition-colors">${motor.brand} ${motor.model}</h3>
+                            <div class="flex items-center gap-3 mt-2 text-xs text-slate-500 font-medium">
+                                <span><i class="fa-solid fa-gauge-high mr-1 text-emerald-600"></i> ${motor.km}</span>
+                                <span>•</span>
+                                <span><i class="fa-solid fa-gear mr-1 text-emerald-600"></i> ${motor.transmission}</span>
+                                <span>•</span>
+                                <span><i class="fa-solid fa-bolt mr-1 text-emerald-600"></i> ${motor.engine}</span>
+                            </div>
+                            <div class="mt-4 flex flex-wrap gap-1.5">
+                                ${conditionHtml}
+                            </div>
+                        </div>
+
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <div>
+                                <div class="text-[11px] text-slate-400 uppercase font-semibold">Harga Cash</div>
+                                <div class="text-lg font-extrabold text-slate-900">${formatRupiah(motor.price)}</div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button onclick="openDetailModal(${motor.id})" class="p-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl transition-colors text-sm" title="Lihat Spesifikasi">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+                                ${isSold 
+                                    ? `<span class="px-3 py-2 bg-rose-100 text-rose-700 font-bold text-xs rounded-xl">Arsip Terjual</span>`
+                                    : `<button onclick="openNegoModal(${motor.id})" class="px-3.5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs rounded-xl shadow-md shadow-emerald-600/20 transition-all flex items-center gap-1.5">
+                                           <i class="fa-solid fa-hand-holding-dollar"></i> Tawar
+                                       </button>`
+                                }
+                            </div>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Filter by Brand buttons
+        function filterByBrand(brand) {
+            currentFilterBrand = brand;
+            
+            document.querySelectorAll('.brand-btn').forEach(btn => {
+                if(btn.textContent.trim().toLowerCase() === brand.toLowerCase() || (brand === 'all' && btn.textContent.trim() === 'Semua')) {
+                    btn.className = "brand-btn active px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-emerald-600 text-white shadow-md shadow-emerald-600/20";
+                } else {
+                    btn.className = "brand-btn px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-slate-100 hover:bg-slate-200 text-slate-700";
+                }
+            });
+
+            applyFilters();
+        }
+
+        function applyFilters() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const brandSelect = document.getElementById('brandFilterSelect').value;
+            
+            let activeBrand = currentFilterBrand;
+            if (brandSelect !== 'all' && activeBrand === 'all') {
+                activeBrand = brandSelect;
+            }
+
+            const filtered = motorcycles.filter(motor => {
+                const matchBrand = (activeBrand === 'all' || motor.brand.toLowerCase() === activeBrand.toLowerCase());
+                const matchQuery = motor.model.toLowerCase().includes(query) || motor.brand.toLowerCase().includes(query);
+                return matchBrand && matchQuery;
+            });
+
+            renderMotorcycles(filtered);
+        }
+
+        function resetFilters() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('brandFilterSelect').value = 'all';
+            filterByBrand('all');
+        }
+
+        // Modal Details logic
+        function openDetailModal(id) {
+            const motor = motorcycles.find(m => m.id === id);
+            if (!motor) return;
+
+            document.getElementById('modalImage').src = motor.image;
+            document.getElementById('modalBrandBadge').textContent = motor.brand;
+            document.getElementById('modalTitle').textContent = `${motor.brand} ${motor.model}`;
+            document.getElementById('modalYear').textContent = `Tahun Produksi: ${motor.year}`;
+            document.getElementById('modalPrice').textContent = formatRupiah(motor.price);
+            document.getElementById('modalKm').textContent = motor.km;
+            document.getElementById('modalTransmission').textContent = motor.transmission;
+            document.getElementById('modalEngine').textContent = motor.engine;
+            document.getElementById('modalYearBox').textContent = motor.year;
+
+            const condContainer = document.getElementById('modalConditions');
+            condContainer.innerHTML = motor.conditions.map(c => 
+                `<span class="bg-emerald-50 text-emerald-700 text-xs font-semibold px-3 py-1.5 rounded-xl border border-emerald-100 flex items-center gap-1.5">
+                    <i class="fa-solid fa-circle-check text-emerald-600"></i> ${c}
+                </span>`
+            ).join('');
+
+            const negoBtn = document.getElementById('modalNegotiateBtn');
+            if (motor.status === 'sold') {
+                negoBtn.classList.add('hidden');
+            } else {
+                negoBtn.classList.remove('hidden');
+                negoBtn.onclick = function() {
+                    closeDetailModal();
+                    openNegoModal(motor.id);
+                };
+            }
+
+            document.getElementById('detailModal').classList.remove('hidden');
+        }
+
+        function closeDetailModal() {
+            document.getElementById('detailModal').classList.add('hidden');
+        }
+
+        // Modal Negotiation logic
+        function openNegoModal(id) {
+            const motor = motorcycles.find(m => m.id === id);
+            if (!motor || motor.status === 'sold') return;
+
+            document.getElementById('negoMotorId').value = motor.id;
+            document.getElementById('negoMotorImg').src = motor.image;
+            document.getElementById('negoMotorTitle').textContent = `${motor.brand} ${motor.model} (${motor.year})`;
+            document.getElementById('negoMotorBasePrice').textContent = formatRupiah(motor.price);
+            
+            const suggestedOffer = motor.price - 1000000;
+            document.getElementById('negoPrice').value = suggestedOffer.toLocaleString('id-ID');
+
+            document.getElementById('negoModal').classList.remove('hidden');
+        }
+
+        function closeNegoModal() {
+            document.getElementById('negoModal').classList.add('hidden');
+        }
+
+        function submitNegotiation(event) {
+            event.preventDefault();
+            const motorId = document.getElementById('negoMotorId').value;
+            const motor = motorcycles.find(m => m.id == motorId);
+            const name = document.getElementById('negoName').value;
+            const phone = document.getElementById('negoPhone').value;
+            const offerPriceRaw = document.getElementById('negoPrice').value;
+            const offerPrice = parseCleanNumber(offerPriceRaw);
+
+            const message = `Halo Admin Razil Motor,%0A%0ASaya ingin menawar motor:%0A*${motor.brand} ${motor.model} (${motor.year})*%0AHarga Cash: ${formatRupiah(motor.price)}%0A%0A*Penawaran Saya:* ${formatRupiah(offerPrice)}%0A%0ANama: ${name}%0ANo HP: ${phone}%0A%0AMohon konfirmasinya, terima kasih!`;
+
+            const waUrl = `https://wa.me/6281234567890?text=${message}`;
+
+            showToast("Penawaran Terkirim!", "Mengarahkan langsung ke WhatsApp Admin Razil Motor...");
+
+            setTimeout(() => {
+                window.open(waUrl, '_blank');
+                closeNegoModal();
+            }, 1000);
+        }
+
+        // General contact WhatsApp
+        function sendGeneralContact(event) {
+            event.preventDefault();
+            const name = document.getElementById('contactName').value;
+            const messageText = document.getElementById('contactMessage').value;
+
+            const message = `Halo Admin Razil Motor,%0A%0ANama: ${name}%0APesan: ${messageText}`;
+            const waUrl = `https://wa.me/6281234567890?text=${message}`;
+
+            showToast("Pesan Disiapkan!", "Membuka WhatsApp untuk mengirim pesan...");
+            setTimeout(() => {
+                window.open(waUrl, '_blank');
+            }, 1000);
+        }
+
+        // Image Preview Handler for File Upload / Camera
+        function previewNewImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const preview = document.getElementById('imagePreview');
+                    const container = document.getElementById('imagePreviewContainer');
+                    preview.src = e.target.result;
+                    container.classList.remove('hidden');
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Admin Modal & Dashboard functions
+        function openAdminModal() {
+            document.getElementById('adminModal').classList.remove('hidden');
+            if (isAdminLoggedIn) {
+                showAdminDashboard();
+            } else {
+                showAdminLogin();
+            }
+        }
+
+        function closeAdminModal() {
+            document.getElementById('adminModal').classList.add('hidden');
+        }
+
+        function handleAdminLogin(event) {
+            event.preventDefault();
+            const pin = document.getElementById('adminPinInput').value;
+            const errorEl = document.getElementById('loginError');
+
+            if (pin === 'admin123') {
+                isAdminLoggedIn = true;
+                errorEl.classList.add('hidden');
+                document.getElementById('adminPinInput').value = '';
+                showAdminDashboard();
+                showToast("Login Berhasil!", "Selamat datang di Panel Admin Razil Motor.");
+            } else {
+                errorEl.classList.remove('hidden');
+            }
+        }
+
+        function logoutAdmin() {
+            isAdminLoggedIn = false;
+            showAdminLogin();
+            showToast("Logged Out", "Anda telah keluar dari panel admin.");
+        }
+
+        function showAdminLogin() {
+            document.getElementById('adminLoginView').classList.remove('hidden');
+            document.getElementById('adminDashboardView').classList.add('hidden');
+        }
+
+        function showAdminDashboard() {
+            document.getElementById('adminLoginView').classList.add('hidden');
+            document.getElementById('adminDashboardView').classList.remove('hidden');
+            renderAdminMotorList();
+        }
+
+        function switchAdminTab(tab) {
+            const addTab = document.getElementById('adminAddTab');
+            const manageTab = document.getElementById('adminManageTab');
+            const addBtn = document.getElementById('tabAddBtn');
+            const manageBtn = document.getElementById('tabManageBtn');
+
+            if (tab === 'add') {
+                addTab.classList.remove('hidden');
+                manageTab.classList.add('hidden');
+                addBtn.className = "px-4 py-2 bg-emerald-600 text-white font-semibold text-xs rounded-xl shadow-sm transition-all";
+                manageBtn.className = "px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs rounded-xl transition-all";
+            } else {
+                addTab.classList.add('hidden');
+                manageTab.classList.remove('hidden');
+                manageBtn.className = "px-4 py-2 bg-emerald-600 text-white font-semibold text-xs rounded-xl shadow-sm transition-all";
+                addBtn.className = "px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs rounded-xl transition-all";
+                renderAdminMotorList();
+            }
+        }
+
+        function addNewMotorcycle(event) {
+            event.preventDefault();
+
+            const brand = document.getElementById('newBrand').value;
+            const model = document.getElementById('newModel').value;
+            const price = parseCleanNumber(document.getElementById('newPrice').value);
+            const year = Number(document.getElementById('newYear').value);
+            const kmRaw = document.getElementById('newKm').value;
+            const km = kmRaw.includes('KM') ? kmRaw : kmRaw + ' KM';
+            const transmission = document.getElementById('newTransmission').value;
+            const engine = document.getElementById('newEngine').value;
+            const fileInput = document.getElementById('newImageFile');
+            const conditionsRaw = document.getElementById('newConditions').value;
+            const conditions = conditionsRaw.split(',').map(c => c.trim()).filter(c => c.length > 0);
+
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const base64Image = e.target.result;
+                    const newMotor = {
+                        id: Date.now(),
+                        brand,
+                        model,
+                        year,
+                        transmission,
+                        km,
+                        engine,
+                        price,
+                        image: base64Image,
+                        conditions,
+                        status: "ready"
+                    };
+
+                    motorcycles.unshift(newMotor);
+                    saveMotorcyclesToStorage();
+                    renderMotorcycles(motorcycles);
+
+                    event.target.reset();
+                    document.getElementById('imagePreviewContainer').classList.add('hidden');
+                    switchAdminTab('manage');
+                    showToast("Unit Ditambahkan!", `${brand} ${model} berhasil dipajang di katalog.`);
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            } else {
+                showToast("Pilih Foto!", "Harap pilih atau ambil foto kendaraan terlebih dahulu.");
+            }
+        }
+
+        function renderAdminMotorList() {
+            const listContainer = document.getElementById('adminMotorList');
+            document.getElementById('adminTotalCount').textContent = motorcycles.length;
+
+            if (motorcycles.length === 0) {
+                listContainer.innerHTML = `<p class="text-xs text-slate-400 text-center py-6">Belum ada unit terdaftar.</p>`;
+                return;
+            }
+
+            listContainer.innerHTML = motorcycles.map(m => {
+                const isSold = m.status === 'sold';
+                return `
+                    <div class="flex items-center justify-between p-3 bg-slate-50 border ${isSold ? 'border-rose-200 bg-rose-50/30' : 'border-slate-200'} rounded-2xl gap-3">
+                        <div class="flex items-center gap-3">
+                            <img src="${m.image}" class="w-12 h-12 object-cover rounded-xl shrink-0" onerror="this.src='https://placehold.co/200x200/1e293b/ffffff?text=Moto'">
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <h4 class="text-sm font-bold text-slate-900">${m.brand} ${m.model} (${m.year})</h4>
+                                    ${isSold ? '<span class="bg-rose-600 text-white text-[10px] font-extrabold px-2 py-0.5 rounded">TERJUAL</span>' : '<span class="bg-emerald-600 text-white text-[10px] font-semibold px-2 py-0.5 rounded">READY</span>'}
+                                </div>
+                                <div class="text-xs text-emerald-600 font-semibold">${formatRupiah(m.price)} • ${m.km}</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button onclick="toggleMotorStatus(${m.id})" class="px-3 py-2 ${isSold ? 'bg-amber-100 text-amber-700 hover:bg-amber-200' : 'bg-rose-100 text-rose-700 hover:bg-rose-200'} rounded-xl text-xs font-bold transition-colors">
+                                ${isSold ? 'Jadikan Ready' : 'Tandai Terjual'}
+                            </button>
+                            <button onclick="deleteMotorcycle(${m.id})" class="p-2 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-xl text-xs font-semibold transition-colors" title="Hapus Permanen">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function toggleMotorStatus(id) {
+            const motor = motorcycles.find(m => m.id === id);
+            if (motor) {
+                motor.status = motor.status === 'sold' ? 'ready' : 'sold';
+                saveMotorcyclesToStorage();
+                renderMotorcycles(motorcycles);
+                renderAdminMotorList();
+                showToast("Status Diperbarui", `Unit ${motor.brand} ${motor.model} kini berstatus: ${motor.status.toUpperCase()}`);
+            }
+        }
+
+        function deleteMotorcycle(id) {
+            motorcycles = motorcycles.filter(m => m.id !== id);
+            saveMotorcyclesToStorage();
+            renderMotorcycles(motorcycles);
+            renderAdminMotorList();
+            showToast("Unit Dihapus", "Kendaraan telah dihapus permanen dari sistem.");
+        }
+
+        // Toast Notification helper
+        function showToast(title, desc) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastTitle').textContent = title;
+            document.getElementById('toastDesc').textContent = desc;
+
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-24', 'opacity-0');
+            }, 4000);
+        }
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+        // Initialize Catalog on Load
+        window.onload = function() {
+            renderMotorcycles(motorcycles);
+        }
+    </script>
+</body>
+</html>
