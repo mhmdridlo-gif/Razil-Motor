@@ -220,6 +220,10 @@
                     <input type="text" id="negoName" required placeholder="Contoh: Budi Santoso" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-accent focus:outline-none text-sm">
                 </div>
                 <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Nomor WhatsApp Anda</label>
+                    <input type="text" id="negoPhone" required placeholder="Contoh: 08123456789" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-accent focus:outline-none text-sm">
+                </div>
+                <div>
                     <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Harga Penawaran Anda (Rp)</label>
                     <input type="text" id="negoPrice" required oninput="formatRupiahInput(this)" placeholder="Contoh: 14.000.000" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-accent focus:outline-none text-sm font-semibold text-accent">
                 </div>
@@ -229,7 +233,7 @@
                 </div>
                 <button type="submit" class="w-full py-3.5 rounded-xl bg-success hover:bg-green-700 text-white font-bold text-sm shadow-lg shadow-success/20 transition flex items-center justify-center gap-2">
                     <i class="fa-brands fa-whatsapp text-lg"></i>
-                    <span>Kirim Penawaran ke WhatsApp</span>
+                    <span>Kirim Penawaran ke Admin</span>
                 </button>
             </form>
         </div>
@@ -246,7 +250,7 @@
                     <i class="fa-solid fa-shield-halved"></i>
                 </div>
                 <h3 class="text-lg font-bold text-primary">Login Admin Razil Motor</h3>
-                <p class="text-xs text-slate-400 mt-1">Masukkan PIN untuk mengelola unit & database.</p>
+                <p class="text-xs text-slate-400 mt-1">Masukkan PIN untuk mengelola unit & inbox.</p>
             </div>
             <form onsubmit="handleAdminLogin(event)" class="space-y-4">
                 <div>
@@ -268,8 +272,8 @@
                         <i class="fa-solid fa-gauge-high"></i>
                     </div>
                     <div>
-                        <h3 class="text-lg font-bold text-primary">Dashboard Manajemen Unit</h3>
-                        <p class="text-xs text-slate-400">Tambah unit, atur status 'Terjual', atau hapus data</p>
+                        <h3 class="text-lg font-bold text-primary">Dashboard Admin Razil Motor</h3>
+                        <p class="text-xs text-slate-400">Kelola unit motor & inbox pesan/penawaran pembeli</p>
                     </div>
                 </div>
                 <div class="flex items-center gap-2">
@@ -280,11 +284,14 @@
             </div>
 
             <!-- Admin Nav Tabs -->
-            <div class="flex gap-2 border-b border-slate-200 pb-3 mb-4">
-                <button onclick="switchAdminTab('list')" id="tabBtnList" class="px-4 py-2 rounded-xl text-xs font-bold bg-primary text-white transition">
-                    Kelola & Histori (<span id="adminUnitCount">0</span>)
+            <div class="flex gap-2 border-b border-slate-200 pb-3 mb-4 overflow-x-auto">
+                <button onclick="switchAdminTab('list')" id="tabBtnList" class="px-4 py-2 rounded-xl text-xs font-bold bg-primary text-white transition whitespace-nowrap">
+                    Kelola Unit (<span id="adminUnitCount">0</span>)
                 </button>
-                <button onclick="switchAdminTab('add')" id="tabBtnAdd" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-600 transition">
+                <button onclick="switchAdminTab('inbox')" id="tabBtnInbox" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-600 transition whitespace-nowrap">
+                    📩 Inbox Nego & Pesan (<span id="adminInboxCount">0</span>)
+                </button>
+                <button onclick="switchAdminTab('add')" id="tabBtnAdd" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-600 transition whitespace-nowrap">
                     + Tambah Unit Baru
                 </button>
             </div>
@@ -292,7 +299,10 @@
             <!-- Tab Content 1: List & History -->
             <div id="adminTabList" class="flex-1 overflow-y-auto space-y-3 pr-2"></div>
 
-            <!-- Tab Content 2: Add Form -->
+            <!-- Tab Content 2: Inbox Nego & Pesan -->
+            <div id="adminTabInbox" class="flex-1 overflow-y-auto hidden space-y-3 pr-2"></div>
+
+            <!-- Tab Content 3: Add Form -->
             <div id="adminTabAdd" class="flex-1 overflow-y-auto hidden pr-2">
                 <form id="addMotorForm" onsubmit="saveNewMotor(event)" class="space-y-4">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -383,9 +393,8 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
         import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, updateDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
 
-        // Konfigurasi Firebase Anda yang otomatis terhubung
         const firebaseConfig = {
-            apiKey: "AIzaSyDEJ7HsNxEWOkQnyVEYCEY2o1CDnPj_AgA",
+            apiKey: "AIzaSyDEJ7HsNxEWOkQnyVEYCEY2o1cDnPj_AgA",
             authDomain: "razil-motor.firebaseapp.com",
             projectId: "razil-motor",
             storageBucket: "razil-motor.appspot.com",
@@ -394,7 +403,8 @@
         };
 
         let db = null;
-        let unsubscribeSnapshot = null;
+        let unsubscribeMotor = null;
+        let unsubscribeInquiry = null;
 
         const defaultMotors = [
             {
@@ -432,6 +442,7 @@
         ];
 
         let currentMotors = [];
+        let currentInquiries = [];
         let selectedCategory = 'Semua';
         let selectedBrand = 'Semua';
 
@@ -453,9 +464,11 @@
 
         function listenToFirestore() {
             if (!db) return;
-            if (unsubscribeSnapshot) unsubscribeSnapshot();
+            if (unsubscribeMotor) unsubscribeMotor();
+            if (unsubscribeInquiry) unsubscribeInquiry();
 
-            unsubscribeSnapshot = onSnapshot(collection(db, "motorcycles"), (snapshot) => {
+            // Listen Motorcycles
+            unsubscribeMotor = onSnapshot(collection(db, "motorcycles"), (snapshot) => {
                 const list = [];
                 snapshot.forEach((docSnap) => {
                     list.push({ id: docSnap.id, ...docSnap.data() });
@@ -468,8 +481,16 @@
                     renderCatalog();
                     renderAdminList();
                 }
-            }, (error) => {
-                console.error("Firestore sync error:", error);
+            });
+
+            // Listen Inquiries (Nego & Pesan)
+            unsubscribeInquiry = onSnapshot(collection(db, "inquiries"), (snapshot) => {
+                const list = [];
+                snapshot.forEach((docSnap) => {
+                    list.push({ id: docSnap.id, ...docSnap.data() });
+                });
+                currentInquiries = list;
+                renderAdminInbox();
             });
         }
 
@@ -533,7 +554,7 @@
                                     <button onclick="openNegoModal('${m.id}', '${m.name}', '${m.price}')" class="px-3 py-2 rounded-xl bg-amber-50 hover:bg-amber-100 text-warning font-bold text-xs transition flex items-center gap-1">
                                         <i class="fa-solid fa-handshake"></i> Nego
                                     </button>
-                                    <a href="https://wa.me/6283892386060?text=Halo%20Razil%20Motor,%20saya%20tertarik%20dengan%20${encodeURIComponent(m.name)}\%20harga\%20Rp\%20${m.price}" target="_blank" class="px-4 py-2 rounded-xl bg-success hover:bg-green-700 text-white font-bold text-xs transition flex items-center gap-1 shadow">
+                                    <a href="https://wa.me/6283892386060?text=Halo%20Razil%20Motor,%20saya%20tertarik%20dengan%20${encodeURIComponent(m.name)}%20harga%20Rp%20${m.price}" target="_blank" class="px-4 py-2 rounded-xl bg-success hover:bg-green-700 text-white font-bold text-xs transition flex items-center gap-1 shadow">
                                         <i class="fa-brands fa-whatsapp"></i> Beli
                                     </a>
                                 </div>`
@@ -577,6 +598,53 @@
                     </div>
                 `;
                 listContainer.appendChild(item);
+            });
+        }
+
+        window.renderAdminInbox = function() {
+            const inboxContainer = document.getElementById('adminTabInbox');
+            document.getElementById('adminInboxCount').innerText = currentInquiries.length;
+            inboxContainer.innerHTML = '';
+
+            if (currentInquiries.length === 0) {
+                inboxContainer.innerHTML = '<p class="text-center text-slate-400 py-8 text-sm">Belum ada pesan penawaran / nego dari pembeli.</p>';
+                return;
+            }
+
+            // Sort newest first if timestamp exists
+            currentInquiries.sort((a, b) => (b.time || 0) - (a.time || 0));
+
+            currentInquiries.forEach(inq => {
+                const statusColor = inq.status === 'Diterima' ? 'bg-success/10 text-success border-success/30' : inq.status === 'Ditolak' ? 'bg-rose-50 text-rose-600 border-rose-200' : 'bg-amber-50 text-amber-600 border-amber-200';
+                
+                const item = document.createElement('div');
+                item.className = `p-4 rounded-2xl border bg-white shadow-sm space-y-3`;
+                item.innerHTML = `
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border ${statusColor}">${inq.status || 'Pending'}</span>
+                            <h4 class="font-extrabold text-sm text-primary mt-1">${inq.buyerName} <span class="text-xs font-normal text-slate-500">(${inq.buyerPhone})</span></h4>
+                            <p class="text-xs text-accent font-semibold">Menawar: ${inq.motorTitle} — <span class="text-success font-bold">Rp ${inq.offeredPrice}</span></p>
+                        </div>
+                        <span class="text-[11px] text-slate-400">${inq.dateStr || ''}</span>
+                    </div>
+                    ${inq.note ? `<p class="text-xs bg-slate-50 p-2.5 rounded-xl text-slate-600 italic">"${inq.note}"</p>` : ''}
+                    <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-100">
+                        <a href="https://wa.me/${inq.buyerPhone.replace(/[^0-9]/g, '')}?text=Halo%20${encodeURIComponent(inq.buyerName)},%20mengenai%20penawaran%20Anda%20untuk%20${encodeURIComponent(inq.motorTitle)}%20sebesar%20Rp%20${encodeURIComponent(inq.offeredPrice)},%20kami%20respon..." target="_blank" class="px-3.5 py-1.5 rounded-xl bg-success hover:bg-green-700 text-white font-bold text-xs transition flex items-center gap-1.5 shadow">
+                            <i class="fa-brands fa-whatsapp"></i> Balas WhatsApp
+                        </a>
+                        <button onclick="updateInqStatus('${inq.id}', 'Diterima')" class="px-3 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-bold text-xs transition">
+                            Terima Tawaran
+                        </button>
+                        <button onclick="updateInqStatus('${inq.id}', 'Ditolak')" class="px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-600 font-bold text-xs transition">
+                            Tolak
+                        </button>
+                        <button onclick="deleteInquiry('${inq.id}')" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold text-xs transition ml-auto">
+                            Hapus
+                        </button>
+                    </div>
+                `;
+                inboxContainer.appendChild(item);
             });
         }
 
@@ -632,6 +700,27 @@
             if (db) {
                 try {
                     await deleteDoc(doc(db, "motorcycles", id));
+                } catch(e) {
+                    console.error(e);
+                }
+            }
+        }
+
+        window.updateInqStatus = async function(id, status) {
+            if (db) {
+                try {
+                    await updateDoc(doc(db, "inquiries", id), { status: status });
+                } catch(e) {
+                    console.error(e);
+                }
+            }
+        }
+
+        window.deleteInquiry = async function(id) {
+            if (!confirm('Hapus pesan ini dari inbox?')) return;
+            if (db) {
+                try {
+                    await deleteDoc(doc(db, "inquiries", id));
                 } catch(e) {
                     console.error(e);
                 }
@@ -726,16 +815,21 @@
 
         window.switchAdminTab = function(tab) {
             document.getElementById('adminTabList').classList.add('hidden');
+            document.getElementById('adminTabInbox').classList.add('hidden');
             document.getElementById('adminTabAdd').classList.add('hidden');
-            document.getElementById('tabBtnList').className = "px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-600 transition";
-            document.getElementById('tabBtnAdd').className = "px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-600 transition";
+            document.getElementById('tabBtnList').className = "px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-600 transition whitespace-nowrap";
+            document.getElementById('tabBtnInbox').className = "px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-600 transition whitespace-nowrap";
+            document.getElementById('tabBtnAdd').className = "px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-600 transition whitespace-nowrap";
 
             if (tab === 'list') {
                 document.getElementById('adminTabList').classList.remove('hidden');
-                document.getElementById('tabBtnList').className = "px-4 py-2 rounded-xl text-xs font-bold bg-primary text-white transition";
+                document.getElementById('tabBtnList').className = "px-4 py-2 rounded-xl text-xs font-bold bg-primary text-white transition whitespace-nowrap";
+            } else if (tab === 'inbox') {
+                document.getElementById('adminTabInbox').classList.remove('hidden');
+                document.getElementById('tabBtnInbox').className = "px-4 py-2 rounded-xl text-xs font-bold bg-primary text-white transition whitespace-nowrap";
             } else if (tab === 'add') {
                 document.getElementById('adminTabAdd').classList.remove('hidden');
-                document.getElementById('tabBtnAdd').className = "px-4 py-2 rounded-xl text-xs font-bold bg-primary text-white transition";
+                document.getElementById('tabBtnAdd').className = "px-4 py-2 rounded-xl text-xs font-bold bg-primary text-white transition whitespace-nowrap";
             }
         }
 
@@ -749,15 +843,40 @@
             document.getElementById('negoModal').classList.add('hidden');
             document.getElementById('negoModal').classList.remove('flex');
         }
-        window.submitNego = function(e) {
-            e.preventDefault();
-            const name = document.getElementById('negoName').value;
-            const price = document.getElementById('negoPrice').value;
-            const note = document.getElementById('negoNote').value;
-            const title = document.getElementById('negoMotorTitle').innerText;
 
-            const text = `Halo Admin Razil Motor, saya *${name}* ingin menawar unit *${title}* dengan harga *Rp ${price}*. Catatan: ${note}`;
-            window.open(`https://wa.me/6283892386060?text=${encodeURIComponent(text)}`, '_blank');
+        window.submitNego = async function(e) {
+            e.preventDefault();
+            const buyerName = document.getElementById('negoName').value;
+            const buyerPhone = document.getElementById('negoPhone').value;
+            const offeredPrice = document.getElementById('negoPrice').value;
+            const note = document.getElementById('negoNote').value;
+            const motorTitle = document.getElementById('negoMotorTitle').innerText;
+
+            const now = new Date();
+            const dateStr = now.toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+
+            const inquiryData = {
+                motorTitle,
+                buyerName,
+                buyerPhone,
+                offeredPrice,
+                note,
+                status: 'Pending',
+                time: Date.now(),
+                dateStr
+            };
+
+            if (db) {
+                try {
+                    await addDoc(collection(db, "inquiries"), inquiryData);
+                    alert('Penawaran berhasil dikirim ke Admin Razil Motor!');
+                } catch(err) {
+                    console.error("Gagal kirim nego:", err);
+                    alert('Gagal mengirim penawaran.');
+                }
+            }
+
+            document.getElementById('negoForm').reset();
             closeNegoModal();
         }
 
